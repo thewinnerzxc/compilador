@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --win portable"
+    "build": "echo 'Vercel Deployment: No build step required'",
+    "build:desktop": "electron-builder --win portable"
   },
   "keywords": [],
   "author": "",
