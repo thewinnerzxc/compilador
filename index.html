@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compilador de Excel (JS)</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Script de SheetJS vendoreado (en la misma carpeta) -->
+    <script src="xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Compilador de Excel (JS)</h1>
+        <p class="subtitle">
+            Carga una carpeta con varios archivos Excel, combínalos, filtra, busca y exporta como si fuera una hoja de
+            cálculo.
+        </p>
+
+        <!-- Área celeste compacta -->
+        <div class="upload-area">
+            <div class="upload-left">
+                <p>Selecciona la carpeta con tus archivos de Excel:</p>
+                <input type="file" id="folderInput" webkitdirectory directory multiple />
+            </div>
+
+            <!-- Tres botones en una sola fila -->
+            <div class="upload-right">
+                <button id="refreshBtn">Actualizar desde archivos cargados</button>
+                <button id="exportExcel">Exportar Excel</button>
+                <button id="exportCSV">Exportar CSV</button>
+            </div>
+        </div>
+
+        <p id="status">Esperando archivos...</p>
+
+        <!-- Controles superiores -->
+        <div id="controls" class="controls" style="display:none;">
+            <div class="controls-left">
+                <div class="search-box">
+                    <span>🔍 Búsqueda global:</span>
+
+                    <!-- Input con botoncito X integrado -->
+                    <div class="search-input-wrapper">
+                        <input type="text" id="globalSearch" placeholder="Escribe para buscar en toda la tabla" />
+                        <button id="clearGlobalBtn" class="clear-input-btn" title="Borrar búsqueda" type="button">
+                            ×
+                        </button>
+                    </div>
+                </div>
+
+                <span id="rowCount"></span>
+
+                <button id="clearFiltersBtn" class="clear-filters-btn">Limpiar filtros</button>
+
+                <!-- Botones de alineación de columnas -->
+                <div class="align-buttons">
+                    <button id="alignUniversBtn" class="align-btn">Ir a Univers.</button>
+                    <button id="alignSourceBtn" class="align-btn">Ir a Source</button>
+                </div>
+
+                <div class="highlighter-box">
+                    <label for="highlightTerm">🖍 Resaltar:</label>
+                    <input type="text" id="highlightTerm" placeholder="uptodate" />
+                </div>
+            </div>
+
+            <div class="controls-right">
+                <div class="pagination">
+                    <button id="prevPage">&lt;</button>
+                    <span id="pageInfo">Página 1 / 1</span>
+                    <button id="nextPage">&gt;</button>
+                    <span>| Filas por página:</span>
+                    <select id="pageSizeSelect">
+                        <option value="50">50</option>
+                        <option value="100" selected>100</option>
+                        <option value="200">200</option>
+                        <option value="500">500</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla con scroll y selección tipo Excel -->
+        <div id="table-wrapper" class="table-wrapper" style="display:none;">
+            <table id="dataTable"></table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

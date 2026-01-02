@@ -1,0 +1,513 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    /* Fondo muy oscuro */
+    color: #e0e0e0;
+    /* Texto claro */
+}
+
+/* Scrollbar oscura (para WebKit) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+    background: #1e1e1e;
+    /* Superficie elevada */
+    padding: 12px 16px 20px;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin-bottom: 12px;
+}
+
+/* Área de carga (Upload) */
+.upload-area {
+    border: 2px dashed #444;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background: #252526;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.upload-area:hover {
+    border-color: #64b5f6;
+    background: #2d2d2d;
+}
+
+.upload-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.upload-left p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.upload-left input[type="file"] {
+    color: #ccc;
+}
+
+/* Botones Superiores */
+.upload-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background: #333;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #444;
+    border-color: #666;
+}
+
+button:active {
+    background: #555;
+}
+
+/* Mensaje de estado */
+#status {
+    font-size: 0.9rem;
+    color: #90caf9;
+    /* Azul claro para info */
+    margin-bottom: 8px;
+    min-height: 1.2em;
+}
+
+/* Controles (Búsqueda, Filtros, Paginación) */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    background: #252526;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+.controls-left,
+.controls-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Búsqueda Global */
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-box span {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+#globalSearch {
+    padding: 6px 36px 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    min-width: 240px;
+    font-size: 0.9rem;
+    background-color: #121212;
+    color: #fff;
+}
+
+#globalSearch:focus {
+    outline: none;
+    border-color: #64b5f6;
+}
+
+/* Botón X dentro del input */
+.clear-input-btn {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    color: #777;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-input-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+#rowCount {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+/* Resaltar */
+.highlighter-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.highlighter-box label {
+    color: #bbb;
+}
+
+#highlightTerm {
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background: #121212;
+    color: #fff;
+    min-width: 150px;
+}
+
+/* Botón Limpiar filtros */
+.clear-filters-btn {
+    background: #3e2723;
+    /* Marrón oscuro */
+    color: #ffccbc;
+    border-color: #5d4037;
+}
+
+.clear-filters-btn:hover {
+    background: #4e342e;
+}
+
+/* Alineación */
+.align-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.align-btn {
+    background: #1a237e;
+    /* Azul oscuro */
+    color: #c5cae9;
+    border-color: #283593;
+}
+
+.align-btn:hover {
+    background: #283593;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #222;
+}
+
+.pagination select {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background: #333;
+    color: #fff;
+}
+
+/* TABLA */
+.table-wrapper {
+    width: 100%;
+    overflow: auto;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background: #1e1e1e;
+    max-height: calc(100vh - 220px);
+    cursor: default;
+}
+
+.table-wrapper.panning {
+    cursor: grabbing;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+/* Headers */
+thead tr:first-child th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #2e7d32;
+    /* Verde más oscuro */
+    color: #ffffff;
+    font-weight: 600;
+    border: 1px solid #333;
+    padding: 8px 10px;
+}
+
+/* Columnas especiales */
+thead tr:first-child th[data-column="User"],
+thead tr:first-child th[data-column="Password"] {
+    background: #ef6c00;
+    /* Naranja oscuro */
+}
+
+/* Filtros de columna */
+thead tr:nth-child(2) th {
+    position: sticky;
+    top: 35px;
+    /* Ajustado aprox */
+    z-index: 2;
+    background: #2c2c2c;
+    border: 1px solid #333;
+    padding: 4px;
+}
+
+thead input[type="text"] {
+    width: 100%;
+    padding: 4px 6px;
+    font-size: 0.85rem;
+    border-radius: 3px;
+    border: 1px solid #555;
+    background: #121212;
+    color: #e0e0e0;
+}
+
+thead input[type="text"]::placeholder {
+    color: #666;
+}
+
+/* Celdas Body */
+th,
+td {
+    border: 1px solid #444;
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    color: #cfcfcf;
+}
+
+th {
+    user-select: none;
+}
+
+td {
+    user-select: none;
+}
+
+th.sortable:hover {
+    background-color: #388e3c;
+    /* Verde Hoover */
+    cursor: pointer;
+}
+
+thead tr:first-child th[data-column="User"].sortable:hover,
+thead tr:first-child th[data-column="Password"].sortable:hover {
+    background-color: #f57c00;
+}
+
+/* Filas alternadas */
+tbody tr:nth-child(even) {
+    background-color: #252526;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #1e1e1e;
+}
+
+tbody tr:hover {
+    background-color: #333;
+    /* Hover fila */
+}
+
+/* Resaltado de texto (highlighter) en celdas */
+/* Mantener contraste legible con fondo verde claro */
+.highlight-span {
+    background-color: #1b5e20 !important;
+    /* Verde muy oscuro de fondo */
+    color: #81c784 !important;
+    /* Verde claro texto */
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+/* STATUS "enviado" en columna Pendientes_ */
+.status-enviado {
+    background-color: #1b5e20 !important;
+    /* Verde oscuro */
+    color: #a5d6a7 !important;
+    /* Verde pastel texto */
+    font-weight: 500;
+}
+
+/* STATUS "processing" en columna Pendientes_ */
+.status-processing {
+    background-color: #b71c1c !important;
+    /* Rojo oscuro background */
+    color: #ffcdd2 !important;
+    /* Rojo claro texto */
+    font-weight: 500;
+}
+
+/* Selección de celdas */
+td.cell-selected {
+    background-color: #311b92 !important;
+    /* Azul/Morado oscuro selección */
+    border: 1px double #7c4dff;
+    color: #ffffff !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .upload-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* --- Colores condicionales para columna "Rest." --- */
+.cell-rest-red {
+    background-color: #ffcdd2 !important;
+    /* Rojo claro */
+    color: #b71c1c !important;
+    /* Rojo oscuro */
+    font-weight: 500;
+}
+
+.cell-rest-yellow {
+    background-color: #fff9c4 !important;
+    /* Amarillo claro */
+    color: #f57f17 !important;
+    /* Naranja/Amarillo oscuro */
+    font-weight: 500;
+}
+
+.cell-rest-green {
+    background-color: #c8f7c5 !important;
+    /* Verde claro */
+    color: #1b5e20 !important;
+    /* Verde oscuro */
+    font-weight: 500;
+}
+
+/* --- Colores condicionales para columna "Journal_" --- */
+.cell-journal-uptodate {
+    background-color: #c8f7c5 !important;
+    /* Verde claro */
+    color: #1b5e20 !important;
+    /* Verde oscuro */
+    font-weight: 500;
+}
+
+.cell-journal-bmj {
+    background-color: #b3e5fc !important;
+    /* Celeste claro */
+    color: #01579b !important;
+    /* Azul oscuro */
+    font-weight: 500;
+}
+
+.cell-journal-dynamed {
+    background-color: #e1bee7 !important;
+    /* Morado claro */
+    color: #4a148c !important;
+    /* Morado oscuro */
+    font-weight: 500;
+}
+
+.cell-journal-clinicalkey {
+    background-color: #fff9c4 !important;
+    /* Amarillo claro */
+    color: #f57f17 !important;
+    /* Naranja oscuro */
+    font-weight: 500;
+}
+
+/* --- Duplicados en Password y Codigos --- */
+.cell-duplicate-red {
+    background-color: #ffcdd2 !important;
+    /* Rojo claro */
+    color: #b71c1c !important;
+    font-weight: bold;
+}
